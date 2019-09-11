@@ -10,7 +10,7 @@ Switcher::Switcher(int pin, bool initstate)
   count = 0;		 //Counts how many cycles (START-STOP) the Switcher has done
 }
 
-void Switcher::Alternate(long on, long off, int unit)  //Switch the relay according to the ON and OFF time set. Is referenced in Hours. 
+void Switcher::Period(long on, long off, int unit)  //Switch the relay according to the ON and OFF time set. Is referenced in Hours. 
   {
     // check to see if it's time to change the state of the DEVICE
     unsigned long OnTime;
@@ -18,8 +18,8 @@ void Switcher::Alternate(long on, long off, int unit)  //Switch the relay accord
     unsigned long currentMillis = millis();
 
     if (unit == 0) {OnTime = on*1000;OffTime = off*1000;}		//Seconds to milliseconds
-    if (unit == 1) {OnTime = on*60000;OffTime = off*60000;}		//Seconds to milliseconds
-    else if (unit == 2) {OnTime = on*3600000;OffTime = off*3600000;}		//Seconds to milliseconds
+    else if (unit == 1) {OnTime = on*60000;OffTime = off*60000;}		//Minutes to milliseconds
+    else (unit == 2) {OnTime = on*3600000;OffTime = off*3600000;}	//Hours to milliseconds
 
 
     if((st == HIGH) && (currentMillis - _previousMillis >= OnTime) )
@@ -42,7 +42,7 @@ void Switcher::Start()			//Switch the relay state. Turns to HIGH if it was OFF, 
   {
 	if (st == _state) {
 		st = !_state;
-		digitalWrite(_pin, st);   // Start DEVICE
+		digitalWrite(_pin, st);   	// Start DEVICE
 		_previousMillis = millis();     //Save current time, so we know when it was switched last
 	}
 }
@@ -50,7 +50,7 @@ void Switcher::Stop()			//Switch the relay state. Turns to HIGH if it was OFF, O
   {
 	if (st != _state) {
 		st = _state;
-		digitalWrite(_pin, st);   // Start DEVICE
+		digitalWrite(_pin, st);   	// Stop DEVICE
 		_previousMillis = millis();     //Save current time, so we know when it was switched last
 	}
 }
@@ -59,8 +59,9 @@ void Switcher::Timer(long on, int unit)		//Switch the relay to initial state if 
     unsigned long OnTime;
     unsigned long currentMillis = millis();
     if (unit == 0) {OnTime = on*1000;}		//Seconds to milliseconds
-    if (unit == 1) {OnTime = on*60000;}		//Seconds to milliseconds
-    else if (unit == 2) {OnTime = on*3600000;}		//Seconds to milliseconds
+    else if (unit == 1) {OnTime = on*60000;}		//Seconds to milliseconds
+    else (unit == 2) {OnTime = on*3600000;}	//Seconds to milliseconds
+	
     if(st != _state  && (currentMillis - _previousMillis >= OnTime))
     {
       st = _state;
