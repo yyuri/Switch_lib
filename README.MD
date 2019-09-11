@@ -10,7 +10,7 @@ Switch_lib library helps you to handle simple operations on digital pin state,
 
 ## Usage of the library
 
-### Definition: Requires a pin on where to actuate and the definition of the initial state of the pin ( HIGH or LOW )
+#### Definition: Requires a pin on where to actuate and the definition of the initial state of the pin ( HIGH or LOW )
 
 ```c++
 Switcher light(int pin, bool initial_state);   //initial_state = HIGH or LOW
@@ -52,7 +52,7 @@ light.Timer(long on, int unit);
         - 1 for minutes, 
         - 2 for hours
         
-      Timer requires initialization, see example section.
+        Timer requires initialization using the Start(); See examples section.
 
 #### Alternated period switcher:
 
