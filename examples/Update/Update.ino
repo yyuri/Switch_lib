@@ -18,9 +18,9 @@ void setup()
 
 void loop()
 {
-    led.Alternate(1,3,0); // Led will stay on for 1 second, off for 3 seconds 
+    led.Period(5,10,0); // Led will stay on for 5 second, off for 10 seconds 
     
-//  led.Alternate(1,3,1); // Led will stay on for 1 minute, off for 3 minutes 
-//  led.Alternate(1,3,2); // Led will stay on for 1 hour, off for 3 hours 
+//  led.Period(1,3,1); // Led will stay on for 1 minute, off for 3 minutes 
+//  led.Period(1,3,2); // Led will stay on for 1 hour, off for 3 hours 
 
 }
