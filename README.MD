@@ -10,7 +10,9 @@ Switch_lib library helps you to handle simple operations on digital pin state,
 
 ## Usage of the library
 
-#### Definition: Requires a pin on where to actuate and the definition of the initial state of the pin ( HIGH or LOW )
+#### Definition: 
+
+- Requires a pin on where to actuate and the definition of the initial state of the pin ( HIGH or LOW )
 
 ```c++
 Switcher light(int pin, bool initial_state);   //initial_state = HIGH or LOW
@@ -25,6 +27,7 @@ void setup()
 #### Start and Stop functions:
 
 - Switch state of the pin based on the initial state, we can call Start() and Stop()
+
 ```c++
     light.Start();            Switch ON the light
     light.Stop();             Switch to the init_state
