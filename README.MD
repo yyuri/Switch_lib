@@ -3,9 +3,10 @@
 
 Switch_lib library helps you to handle simple operations on digital pin state,
 
-- It's thought to actuate on relays, turn ON & OFF with ease relays with attached temporization and counters
-
-- Handle timers and switch relays without delay functions or RTC clocks, just simple functions for Arduino
+- Call simple and intuitive functions to switch digitalpin states
+- Switch HIGH/LOW pins with temporization, timecounters and periods of time
+- Attach temporization and counters to your relays and devices with ease
+- Does NOT use delay functions or RTC clocks, just simple good Arduino code
 
 ## Usage of the library
 
@@ -19,7 +20,15 @@ void setup()
   digitalWrite(pin,initial_state);// digitalWrite defined during the setup
 }
 ```
-### Start and Stop functions:
+
+Easy to use functions: 4 Functions to make it all
+- Start();
+- Stop();
+- Timer(long ON,int time_unit);
+- Period(long ON, long OFF, int time_unit);
+
+
+#### Start and Stop functions:
 
 - Switch state of the pin based on the initial state, we can call Start() and Stop()
 ```c++
@@ -28,7 +37,7 @@ void setup()
 ```       
     
     
-### Timer function:
+#### Timer function:
 
 - Turn to the initial state after any desired time: 5 seconds, 30 minutes or 1 hour.
 
@@ -50,7 +59,7 @@ light.Timer(long on, int unit);
               2 for hours
       Timer requires initialization, see example section.
 
-### Alternated period switcher:
+#### Alternated period switcher:
 
 - Switch the state of the pin every certain time: Like 1minute ON, 5 minutes OFF
     
