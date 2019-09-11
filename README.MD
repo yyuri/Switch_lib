@@ -49,6 +49,6 @@ Alternate switcher:
               2 for hours
      Example: Alternate(14, 8, 2); Will create periods of 14h ON, 8h OFF.
 
-
+[![arduino-library-badge](https://www.ardu-badge.com/badge/switch_lib.svg)](https://www.ardu-badge.com/MyLibrary)
 
       
