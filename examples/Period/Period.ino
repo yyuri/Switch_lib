@@ -4,10 +4,9 @@
  It will stay OFF for 10 seconds
  TIME UNIT can be in seconds, minutes or hours
  */
-
 #include <Switcher.h>       //Include Switcher library
 #define LED 13               // Define the led's pin
-bool LED_INIT = HIGH;        //We define HIGH as the INITIAL state of the led
+bool LED_INIT = LOW;        //We define LOW as the INITIAL state of the led
 
 Switcher led(LED, LED_INIT);    // Define the Switcher led function led(LED pin, pin initial state: HIGH or LOW )
 
