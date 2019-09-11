@@ -10,7 +10,7 @@ Switch_lib library helps you to handle simple operations on digital pin state,
 
 ## Usage of the library
 
-#### Definition: Requires a pin on where to actuate and the initial state of the pin ( HIGH or LOW )
+#### Definition: Requires a pin on where to actuate and the definition of the initial state of the pin ( HIGH or LOW )
 
 ```c++
 Switcher light(int pin, bool initial_state);   //initial_state = HIGH or LOW
@@ -21,14 +21,8 @@ void setup()
 }
 ```
 
-#### Easy to use functions: 4 Functions to make it all
-- Start();
-- Stop();
-- Timer(long ON,int time_unit);
-- Period(long ON, long OFF, int time_unit);
 
-
-#### Start and Stop functions:
+### Start and Stop functions:
 
 - Switch state of the pin based on the initial state, we can call Start() and Stop()
 ```c++
@@ -37,7 +31,7 @@ void setup()
 ```       
     
     
-#### Timer function:
+### Timer function:
 
 - Turn to the initial state after any desired time: 5 seconds, 30 minutes or 1 hour.
 
