@@ -24,7 +24,7 @@ void setup()
 - Switch state of the pin based on the initial state, we can call Start() and Stop()
 ```c++
     light.Start();            Switch ON the light
-    light.Stop();	            Switch to the init_state
+    light.Stop();             Switch to the init_state
 ```       
     
     
@@ -33,29 +33,28 @@ void setup()
 - Turn to the initial state after any desired time: 5 seconds, 30 minutes or 1 hour.
 
 ```c++   
-Switcher light(int pin, bool initial_state);   //initial_state = HIGH or LOW
-void setup()
-{
-  pinMode(pin,OUTPUT);             // pinMode should be defined during setup
-  digitalWrite(pin,initial_state); // digitalWrite with the initial state for the pin should be defined during the setup
-  light.start();                   //Timer requires initialization, see example section.
-}
 void loop()
 {
-light.Timer(5,0);  //It will stay ON for 5seconds
+  if (condition == TRUE) {
+  light.Start();                   //Timer requires initialization, see example section.
+  }
+
+  light.Timer(5,0);  //Turn ON for 5 seconds
 }
 ```       
 light.Timer(long on, int unit);
-   - on: Desired time
-    - unit: 0: seconds, 1: minutes, 2:hours
-      Example: Timer(5,0) will turn the pin to the initial state after 5 seconds
+      - on: Desired time
+      - unit: Defines the time unit to use
+              0 for seconds, 
+              1 for minutes, 
+              2 for hours
       Timer requires initialization, see example section.
 
 ### Alternated period switcher:
 
 - Switch the state of the pin every certain time: Like 1minute ON, 5 minutes OFF
     
-    Alternate(long on, long off, int unit);
+    Period(long on, long off, int unit);
       - on: Desired ON time
       - off: Desired OFF time
       - unit: Defines the time unit to use
@@ -65,15 +64,9 @@ light.Timer(long on, int unit);
      Example: Period(14, 8, 2); 14h ON / 8h OFF.
 
 ```c++
-Switcher light(int pin, bool initial_state);   //initial_state = HIGH or LOW
-void setup()
-{
-  pinMode(pin,OUTPUT);            // pinMode should be defined during setup
-  digitalWrite(pin,initial_state);// digitalWrite defined during the setup
-}
 void loop()
 {
-light.Period(14, 8, 2); 
+light.Period(14, 8, 2);  //14 hours ON, 8 hours OFF
 }
 ```
       
