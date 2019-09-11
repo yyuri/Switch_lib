@@ -13,7 +13,7 @@ Switcher led(LED, LED_init);
 void setup()
 {
   pinMode(LED,OUTPUT);
-  digitalWrite(LED,LED_init); //The pinMode and initial state should still be defined in setup. digitalWrite
+  digitalWrite(LED,LED_init); //The pinMode and initial state should always be defined during setup.
 }
 
 void loop()
