@@ -16,15 +16,15 @@ Switcher light(int pin, bool initial_state);   //initial_state = HIGH or LOW
 void setup()
 {
   pinMode(pin,OUTPUT);            // pinMode should be defined during setup
-  digitalWrite(pin,initial_state);     // digitalWrite with the initial state for the pin should be defined during the setup
+  digitalWrite(pin,initial_state);// digitalWrite defined during the setup
 }
 ```
 ### Start and Stop functions:
 
 - Switch state of the pin based on the initial state, we can call Start() and Stop()
 ```c++
-    light.Start();            Switch the state of the pin to HIGH if it was LOW, and LOW if it was HIGH
-    light.Stop();	            Switch the state of the pin to the initial state
+    light.Start();            Switch ON the light
+    light.Stop();	            Switch to the init_state
 ```       
     
     
@@ -51,7 +51,7 @@ light.Timer(long on, int unit);
       Example: Timer(5,0) will turn the pin to the initial state after 5 seconds
       Timer requires initialization, see example section.
 
-Alternate switcher:
+### Alternated period switcher:
 
 - Switch the state of the pin every certain time: Like 1minute ON, 5 minutes OFF
     
@@ -62,7 +62,18 @@ Alternate switcher:
               0 for seconds, 
               1 for minutes, 
               2 for hours
-     Example: Alternate(14, 8, 2); Will create periods of 14h ON, 8h OFF.
+     Example: Period(14, 8, 2); 14h ON / 8h OFF.
 
-
+```c++
+Switcher light(int pin, bool initial_state);   //initial_state = HIGH or LOW
+void setup()
+{
+  pinMode(pin,OUTPUT);            // pinMode should be defined during setup
+  digitalWrite(pin,initial_state);// digitalWrite defined during the setup
+}
+void loop()
+{
+light.Period(14, 8, 2); 
+}
+```
       
