@@ -10,7 +10,7 @@ Switcher::Switcher(int pin, bool initstate)
   count = 0;		 //Counts how many cycles (START-STOP) the Switcher has done
 }
 
-void Switcher::Update(long on, long off, int unit)  //Switch the relay according to the ON and OFF time set. Is referenced in Hours. 
+void Switcher::Alternate(long on, long off, int unit)  //Switch the relay according to the ON and OFF time set. Is referenced in Hours. 
   {
     // check to see if it's time to change the state of the DEVICE
     unsigned long OnTime;
