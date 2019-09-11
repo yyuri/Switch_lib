@@ -10,7 +10,7 @@ Switch_lib library helps you to handle simple operations on digital pin state,
 
 ## Usage of the library
 
-#### Definition: Requires a pin on where to actuate and the definition of the initial state of the pin ( HIGH or LOW )
+### Definition: Requires a pin on where to actuate and the definition of the initial state of the pin ( HIGH or LOW )
 
 ```c++
 Switcher light(int pin, bool initial_state);   //initial_state = HIGH or LOW
@@ -22,7 +22,7 @@ void setup()
 ```
 
 
-### Start and Stop functions:
+#### Start and Stop functions:
 
 - Switch state of the pin based on the initial state, we can call Start() and Stop()
 ```c++
@@ -31,9 +31,9 @@ void setup()
 ```       
     
     
-### Timer function:
+#### Timer function:
 
-- Turn to the initial state after any desired time: 5 seconds, 30 minutes or 1 hour.
+- Turn to the initial state after any desired time: seconds, minutes or hours.
 
 ```c++   
 void loop()
@@ -48,23 +48,15 @@ void loop()
 light.Timer(long on, int unit);
       - on: Desired time
       - unit: Defines the time unit to use
-              0 for seconds, 
-              1 for minutes, 
-              2 for hours
+        - 0 for seconds, 
+        - 1 for minutes, 
+        - 2 for hours
+        
       Timer requires initialization, see example section.
 
 #### Alternated period switcher:
 
 - Switch the state of the pin every certain time: Like 1minute ON, 5 minutes OFF
-    
-    Period(long on, long off, int unit);
-      - on: Desired ON time
-      - off: Desired OFF time
-      - unit: Defines the time unit to use
-              0 for seconds, 
-              1 for minutes, 
-              2 for hours
-     Example: Period(14, 8, 2); 14h ON / 8h OFF.
 
 ```c++
 void loop()
@@ -72,4 +64,16 @@ void loop()
 light.Period(14, 8, 2);  //14 hours ON, 8 hours OFF
 }
 ```
+
+Period(long on, long off, int unit);
+  - on: Desired ON time
+  - off: Desired OFF time
+  - unit: Defines the time unit to use
+    - 0 for seconds, 
+    - 1 for minutes, 
+    - 2 for hours
+    
+    Example: Period(14, 8, 2); 14h ON / 8h OFF.
+
+
       
