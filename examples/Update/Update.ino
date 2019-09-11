@@ -11,16 +11,16 @@ Switcher led(LED, HIGH);  // Define the Switcher led function led(LED pin, pin i
 
 void setup()
 {
-  pinMode(LED,OUTPUT);      // Define the Switcher led function
-  digitalWrite(LED,HIGH);   // Define the Switcher led function
+  pinMode(LED,OUTPUT);      // pinMode should be defined during setup, it's always needed
+  digitalWrite(LED,HIGH);   // Setting digitalWrite to the initial state it's always a good practice
 
 }
 
 void loop()
 {
-    led.Update(1,3,0); // Led will stay on for 1 second, off for 3 seconds 
+    led.Alternate(1,3,0); // Led will stay on for 1 second, off for 3 seconds 
     
-//  led.Update(1,3,1); // Led will stay on for 1 minute, off for 3 minutes 
-//  led.Update(1,3,2); // Led will stay on for 1 hour, off for 3 hours 
+//  led.Alternate(1,3,1); // Led will stay on for 1 minute, off for 3 minutes 
+//  led.Alternate(1,3,2); // Led will stay on for 1 hour, off for 3 hours 
 
 }
