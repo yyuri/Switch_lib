@@ -1,38 +1,53 @@
 
-Switch_lib is a library for Arduino
+# Switch_lib: Arduino library
 
-Switch_lib library helps you to handle simple operations on digital pin state, it's thought to actuate on relays, turning ON and OFF devices with timers and handling alternated time controled states:
+Switch_lib library helps you to handle simple operations on digital pin state,
 
+- It's thought to actuate on relays, turn ON & OFF with ease relays with attached temporization and counters
 
+- Handle timers and switch relays without delay functions or RTC clocks, just simple functions for Arduino
 
-- Turn any pin HIGH with a timer attached: for 1 second, 5 minutes or 10 hours
+## Usage of the library
 
+Definition: Requires a pin on where to actuate and the initial state of the pin ( HIGH or LOW )
 
-- Defines Start and Stop functions to switch the initial defined state of the Pin
+```c++
+Switcher light(int pin, bool initial_state);   //initial_state = HIGH or LOW
+void setup()
+{
+  pinMode(pin,OUTPUT);            // pinMode should be defined during setup
+  digitalWrite(pin,initial_state);     // digitalWrite with the initial state for the pin should be defined during the setup
+}
+```
+### Start and Stop functions:
 
-
-It use 4 Functions and a definition:
-
-Definition: Requires a pin on where to actuate and the initial desired state of the pin ( HIGH or LOW )
-
-    Switcher(pin, initial_state);
+- Switch state of the pin based on the initial state, we can call Start() and Stop()
+```c++
+    light.Start();            Switch the state of the pin to HIGH if it was LOW, and LOW if it was HIGH
+    light.Stop();	            Switch the state of the pin to the initial state
+```       
     
-Start and Stop functions:
-
-- Switch HIGH or LOW based on the initial state, so we say Start and Stop to any pin
-
-    Start();            Switch the state of the pin to HIGH if it was LOW, and LOW if it was HIGH
-    Stop();	            Switch the state of the pin to the initial state
-        
     
-    
-Timer function:
+### Timer function:
 
-- Turn the pin to the initial state after any desired time: 5 seconds, 30 minutes or 1 hour.
-    
-    Timer(long on, int unit);
-      - on: Desired time
-      - unit: 0: seconds, 1: minutes, 2:hours
+- Turn to the initial state after any desired time: 5 seconds, 30 minutes or 1 hour.
+
+```c++   
+Switcher light(int pin, bool initial_state);   //initial_state = HIGH or LOW
+void setup()
+{
+  pinMode(pin,OUTPUT);             // pinMode should be defined during setup
+  digitalWrite(pin,initial_state); // digitalWrite with the initial state for the pin should be defined during the setup
+  light.start();                   //Timer requires initialization, see example section.
+}
+void loop()
+{
+light.Timer(5,0);  //It will stay ON for 5seconds
+}
+```       
+light.Timer(long on, int unit);
+   - on: Desired time
+    - unit: 0: seconds, 1: minutes, 2:hours
       Example: Timer(5,0) will turn the pin to the initial state after 5 seconds
       Timer requires initialization, see example section.
 
@@ -49,6 +64,5 @@ Alternate switcher:
               2 for hours
      Example: Alternate(14, 8, 2); Will create periods of 14h ON, 8h OFF.
 
-[![arduino-library-badge](https://www.ardu-badge.com/badge/switch_lib.svg)](https://www.ardu-badge.com/MyLibrary)
 
       
