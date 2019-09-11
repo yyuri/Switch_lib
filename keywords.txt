@@ -1,5 +1,5 @@
 Switcher	KEYWORD1
-Update	KEYWORD2
+Alternate	KEYWORD2
 Start	KEYWORD2
 Stop	KEYWORD2
 Timer	KEYWORD2
