@@ -8,15 +8,15 @@
 #define SWITCHER_H
 
 
-class Switcher   //Turn on/off a relay, set delay timer for HIGH and LOW state, or switch a relay with a timer(seconds).
+class Switcher  
 {  
   public:
-    Switcher(int pin, bool state);
-    void Period(long on, long off, int unit);
-    void Start();	
+    Switcher(int pin, bool state);            //Set pin to operate and initial state HIGH or LOW
+    void Period(long on, long off, int unit); 
+    void Start();	                            
     void Stop();	
     void Timer(long on, int unit);
-    int count;
+    int count;                         
     bool st;
 
     
