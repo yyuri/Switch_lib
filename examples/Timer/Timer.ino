@@ -9,7 +9,7 @@
 
 #include <Switcher.h>          //Include Switcher library
 #define LED 13                  //Define the led's pin
-bool LED_INIT = HIGH;           //We define HIGH as the INITIAL state of the led
+bool LED_INIT = LOW;           //We define HIGH as the INITIAL state of the led
 
 Switcher led(LED, LED_INIT);   // Define the Switcher led function led( LED pin , initial state: HIGH or LOW )
 int condition = 0;              //Supposed variable condition on which we turn ON the led
