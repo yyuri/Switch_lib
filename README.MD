@@ -44,15 +44,15 @@ void loop()
 
   light.Timer(5,0);  //Turn ON for 5 seconds
 }
-```       
+```
 light.Timer(long on, int unit);
-      - on: Desired time
-      - unit: Defines the time unit to use
-        - 0 for seconds, 
-        - 1 for minutes, 
-        - 2 for hours
-        
-        Timer requires initialization using the Start(); See examples section.
+  - on: Desired time
+  - unit: Defines the time unit to use
+    - 0 for seconds, 
+    - 1 for minutes, 
+    - 2 for hour
+    
+    Timer requires initialization using the Start(); See examples section.
 
 #### Alternated period switcher:
 
