@@ -12,7 +12,7 @@ class Switcher   //Turn on/off a relay, set delay timer for HIGH and LOW state, 
 {  
   public:
     Switcher(int pin, bool state);
-    void Alternate(long on, long off, int unit);
+    void Period(long on, long off, int unit);
     void Start();	
     void Stop();	
     void Timer(long on, int unit);
