@@ -79,4 +79,4 @@ Period(long on, long off, int unit);
     Example: Period(14, 8, 2); 14h ON / 8h OFF.
 
 
-      
+ [![arduino-library-badge](https://www.ardu-badge.com/badge/Switch_lib.svg?)](https://www.ardu-badge.com/Switch_lib)     
