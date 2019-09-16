@@ -16,24 +16,25 @@ int Switcher::Period(long on, long off, int unit)  //Switch the relay according 
     unsigned long OnTime;
     unsigned long OffTime;
     unsigned long currentMillis = millis();
-
+    int i=0;
     if (unit == 0) {OnTime = on*1000;OffTime = off*1000;}		//Seconds to milliseconds
     else if (unit == 1) {OnTime = on*60000;OffTime = off*60000;}		//Minutes to milliseconds
     else (unit == 2) {OnTime = on*3600000;OffTime = off*3600000;}	//Hours to milliseconds
 
     if((st == HIGH) && (currentMillis - _previousMillis >= OnTime) )
     {
-      _previousMillis = currentMillis; 		// Save current time
-      digitalWrite(_pin, LOW);  		// Switch the relay
-      st = LOW;  				// Save current state of the relay
+	_previousMillis = currentMillis; 	// Save current time
+	digitalWrite(_pin, LOW);  		// Switch the relay
+	st = LOW;  				// Save current state of the relay
     }
     else if ((st == LOW) && (currentMillis - _previousMillis >= OffTime) )
     {
-      _previousMillis = currentMillis;  // Save current time
-      digitalWrite(_pin, HIGH);   	// Switch the relay
-      st = HIGH;  			// Save current state of the relay
+	_previousMillis = currentMillis;  	// Save current time
+	digitalWrite(_pin, HIGH);   		// Switch the relay
+	st = HIGH;  				// Save current state of the relay
+	i = 1;
     }
-    return(st);
+    return(i);
   }
 
 void Switcher::Start()			//Switch the relay state. Turns to HIGH if it was OFF, OFF is it was ON 
