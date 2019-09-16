@@ -19,7 +19,7 @@ Switcher light(int pin, bool initial_state);   //initial_state = HIGH or LOW
 void setup()
 {
   pinMode(pin,OUTPUT);            // pinMode should be defined during setup
-  digitalWrite(pin,initial_state);// digitalWrite defined during the setup
+  digitalWrite(pin,initial_state);// digitalWrite should also be defined during the setup
 }
 ```
 
