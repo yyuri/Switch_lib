@@ -67,7 +67,7 @@ int Switcher::Timer(long on, int unit)		//Switch the relay to initial state if i
   {
     unsigned long OnTime;
     unsigned long currentMillis = millis();
-    i = 0;
+    int i = 0;
     if (unit == 0) {
 	OnTime = on*1000;	//Seconds to milliseconds
 	}		
