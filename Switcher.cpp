@@ -7,7 +7,6 @@ Switcher::Switcher(int pin, bool initstate)
   _pin = pin;		 //Stores the Arduino pin that operates the relay
   _state = initstate;	 //Stores the inital or default state of the relay (HIGH OR LOW)
   st = _state;     	 //Stores the current state of the Switch  (HIGH OR LOW)
-  count = 0;		 //Counts how many cycles (START-STOP) the Switcher has done
 }
 
 int Switcher::Period(long on, long off, int unit)  //Switch the relay according to the ON and OFF time set. Is referenced in Hours. 
@@ -17,22 +16,31 @@ int Switcher::Period(long on, long off, int unit)  //Switch the relay according 
     unsigned long OffTime;
     unsigned long currentMillis = millis();
     int i=0;
-    if (unit == 0) {OnTime = on*1000;OffTime = off*1000;}		//Seconds to milliseconds
-    else if (unit == 1) {OnTime = on*60000;OffTime = off*60000;}		//Minutes to milliseconds
-    else (unit == 2) {OnTime = on*3600000;OffTime = off*3600000;}	//Hours to milliseconds
+    if (unit == 0) {
+	OnTime = on*1000;	//Seconds to milliseconds
+	OffTime = off*1000;
+	}		
+    else if (unit == 1) {
+	OnTime = on*60000;	//Minutes to milliseconds	
+	OffTime = off*60000;	
+	}	
+    else {
+	OnTime = on*3600000;	//Hours to milliseconds
+	OffTime = off*3600000;
+	}	
 
     if((st == HIGH) && (currentMillis - _previousMillis >= OnTime) )
     {
 	_previousMillis = currentMillis; 	// Save current time
 	digitalWrite(_pin, LOW);  		// Switch the relay
 	st = LOW;  				// Save current state of the relay
+	i = 1;
     }
     else if ((st == LOW) && (currentMillis - _previousMillis >= OffTime) )
     {
 	_previousMillis = currentMillis;  	// Save current time
 	digitalWrite(_pin, HIGH);   		// Switch the relay
 	st = HIGH;  				// Save current state of the relay
-	i = 1;
     }
     return(i);
   }
@@ -59,14 +67,21 @@ int Switcher::Timer(long on, int unit)		//Switch the relay to initial state if i
   {
     unsigned long OnTime;
     unsigned long currentMillis = millis();
-	
-    if (unit == 0) {OnTime = on*1000;}		//Seconds to milliseconds
-    else if (unit == 1) {OnTime = on*60000;}		//Seconds to milliseconds
-    else (unit == 2) {OnTime = on*3600000;}	//Seconds to milliseconds
+    i = 0;
+    if (unit == 0) {
+	OnTime = on*1000;	//Seconds to milliseconds
+	}		
+    else if (unit == 1) {
+	OnTime = on*60000;	//Minutes to milliseconds
+	}		
+    else {
+	OnTime = on*3600000;	//Seconds to milliseconds
+	}	
 	
     if(st != _state  && (currentMillis - _previousMillis >= OnTime)) {
-      st = _state;
-      digitalWrite(_pin, st);   // Start DEVICE
+	st = _state;
+ 	digitalWrite(_pin, st);   // Start DEVICE
+	i = 1;
     }
-    return(st);	
+    return(i);	
  }
