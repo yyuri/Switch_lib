@@ -21,14 +21,11 @@ int Switcher::Period(long on, long off, int unit)  //Switch the relay according 
     else if (unit == 1) {OnTime = on*60000;OffTime = off*60000;}		//Minutes to milliseconds
     else (unit == 2) {OnTime = on*3600000;OffTime = off*3600000;}	//Hours to milliseconds
 
-
     if((st == HIGH) && (currentMillis - _previousMillis >= OnTime) )
     {
-
       _previousMillis = currentMillis; 		// Save current time
       digitalWrite(_pin, LOW);  		// Switch the relay
       st = LOW;  				// Save current state of the relay
-      count = count + 1;
     }
     else if ((st == LOW) && (currentMillis - _previousMillis >= OffTime) )
     {
@@ -47,6 +44,7 @@ void Switcher::Start()			//Switch the relay state. Turns to HIGH if it was OFF, 
 		_previousMillis = millis();     //Save current time, so we know when it was switched last
 	}
 }
+
 void Switcher::Stop()			//Switch the relay state. Turns to HIGH if it was OFF, OFF is it was ON 
   {
 	if (st != _state) {
@@ -55,16 +53,17 @@ void Switcher::Stop()			//Switch the relay state. Turns to HIGH if it was OFF, O
 		_previousMillis = millis();     //Save current time, so we know when it was switched last
 	}
 }
+
 int Switcher::Timer(long on, int unit)		//Switch the relay to initial state if it was switched more than x Time. It can be refferenced in seconds, minutes or hours.
   {
     unsigned long OnTime;
     unsigned long currentMillis = millis();
+	
     if (unit == 0) {OnTime = on*1000;}		//Seconds to milliseconds
     else if (unit == 1) {OnTime = on*60000;}		//Seconds to milliseconds
     else (unit == 2) {OnTime = on*3600000;}	//Seconds to milliseconds
 	
-    if(st != _state  && (currentMillis - _previousMillis >= OnTime))
-    {
+    if(st != _state  && (currentMillis - _previousMillis >= OnTime)) {
       st = _state;
       digitalWrite(_pin, st);   // Start DEVICE
     }
