@@ -46,7 +46,7 @@ void loop()
   condition = FALSE;
   }
 
-  light.Timer(5,0);  //Turn ON for 5 seconds
+  light.Timer(5,0);  //It will keep lights ON for 5 seconds
 }
 ```
 light.Timer(long on, int unit);
