@@ -43,6 +43,7 @@ void loop()
 {
   if (condition == TRUE) {
   light.Start();                   //Timer requires initialization, see example section.
+  condition = FALSE;
   }
 
   light.Timer(5,0);  //Turn ON for 5 seconds
