@@ -17,12 +17,11 @@ class Switcher
     void Stop();	
     int Timer(long on, int unit);
     bool st;
-
+    unsigned long _previousMillis; // will store last time DEVICE was updated
     
   private:
     int _pin;      // the number of the Power pin
     bool _state;   // Initial relay state: HIGH OR LOW
-    unsigned long _previousMillis; // will store last time DEVICE was updated
 };
 
 #endif
