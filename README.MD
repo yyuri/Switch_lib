@@ -5,8 +5,8 @@ Switch_lib library helps you to handle simple operations on digital pin states:
 
 - Use simple and intuitive functions to switch digital pin states
 - Turn HIGH/LOW digital pins with attached temporizators, timecounters and periods of time
-- Use counters and timers to control relays and devices with ease
-- It does all that without using Delay functions or RTC clocks, just simple Arduino code
+- Use this counters and timers to control relays and devices with ease
+- Switch_lib does all this timeflow control without using Delay function or RTC clocks, just plain and simple Arduino code
 
 ## Usage of the library
 
